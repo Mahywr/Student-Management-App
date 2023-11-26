@@ -1,8 +1,8 @@
 namespace practice_1
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
         }
@@ -12,6 +12,11 @@ namespace practice_1
             FrmApllication form = new FrmApllication();
             form.Show();
 
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
     }

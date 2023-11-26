@@ -1,6 +1,6 @@
 ﻿namespace practice_1
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         ///  Required designer variable.
@@ -67,15 +67,16 @@
             btnAdduser.UseVisualStyleBackColor = true;
             btnAdduser.Click += btnAdduser_Click;
             // 
-            // Form1
+            // FrmMain
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 405);
             Controls.Add(maingpBox);
             Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Name = "Form1";
-            Text = "practice 1";
+            Name = "FrmMain";
+            Text = "Student Management App";
+            Load += Form1_Load;
             maingpBox.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
