@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace practice_1
 {
@@ -27,23 +28,35 @@ namespace practice_1
         {
             string userName = txtName.Text;
 
+
             if (int.TryParse(txtCohortYear.Text, out int cohortYear))
             {
                 
-                InsertNameIntoDatabas(userName, cohortYear);
+                string selectedDuration = cmbDuration.SelectedItem.ToString();
+                string uniqueId = GenerateUniqueId(cohortYear);
+
+
+
+                InsertNameIntoDatabas(uniqueId ,userName, cohortYear, selectedDuration);
+
+
+
+
             }
             else
             {
-                
+
                 MessageBox.Show("Please enter a valid year.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
         private void
-            InsertNameIntoDatabas(string userName , int cohortYear)
+            InsertNameIntoDatabas(string uniqueId , string userName, int cohortYear, string selectedDuration )
         {
             string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3;";
 
-            string commandText = "INSERT INTO registration (Name , cohortYear) VALUES (@Name , @cohortYear);";
+            string commandText = "INSERT INTO registration (Name , cohortYear, Duration , id) VALUES (@Name , @cohortYear, @Duration , @UniqueId);";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -52,6 +65,8 @@ namespace practice_1
                 {
                     command.Parameters.AddWithValue("@Name", userName);
                     command.Parameters.AddWithValue("@cohortYear", cohortYear);
+                    command.Parameters.AddWithValue("@Duration", selectedDuration);
+                    command.Parameters.AddWithValue("@UniqueId", uniqueId);
 
                     command.ExecuteNonQuery();
 
@@ -59,8 +74,26 @@ namespace practice_1
                 }
             }
         }
+                private string GenerateUniqueId(int cohortYear)
+                {
+                    Random random = new Random();
+                    int randomNumber = random.Next(100000, 999999);
+                    return $"{cohortYear}{randomNumber}";
+                }
+
+
+
+
+
+            
+        
 
         private void FrmApllication_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

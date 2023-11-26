@@ -29,17 +29,21 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            label3 = new Label();
+            cmbDuration = new ComboBox();
+            label2 = new Label();
+            txtCohortYear = new TextBox();
             btnAddSave = new Button();
             label1 = new Label();
             txtName = new TextBox();
-            label2 = new Label();
-            txtCohortYear = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ScrollBar;
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(cmbDuration);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtCohortYear);
             groupBox1.Controls.Add(btnAddSave);
@@ -51,6 +55,42 @@
             groupBox1.Size = new Size(800, 158);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(464, 32);
+            label3.Name = "label3";
+            label3.Size = new Size(121, 20);
+            label3.TabIndex = 7;
+            label3.Text = "Course duration :";
+            // 
+            // cmbDuration
+            // 
+            cmbDuration.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDuration.FormattingEnabled = true;
+            cmbDuration.Items.AddRange(new object[] { "One year ", "Two years", "Three years" });
+            cmbDuration.Location = new Point(591, 29);
+            cmbDuration.Name = "cmbDuration";
+            cmbDuration.Size = new Size(151, 28);
+            cmbDuration.TabIndex = 6;
+            cmbDuration.SelectedIndexChanged += comboBoxType_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(234, 32);
+            label2.Name = "label2";
+            label2.Size = new Size(89, 20);
+            label2.TabIndex = 5;
+            label2.Text = "Cohort Year:";
+            // 
+            // txtCohortYear
+            // 
+            txtCohortYear.Location = new Point(329, 29);
+            txtCohortYear.Name = "txtCohortYear";
+            txtCohortYear.Size = new Size(125, 27);
+            txtCohortYear.TabIndex = 4;
             // 
             // btnAddSave
             // 
@@ -79,22 +119,6 @@
             txtName.Size = new Size(125, 27);
             txtName.TabIndex = 0;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(234, 32);
-            label2.Name = "label2";
-            label2.Size = new Size(89, 20);
-            label2.TabIndex = 5;
-            label2.Text = "Cohort Year:";
-            // 
-            // txtCohortYear
-            // 
-            txtCohortYear.Location = new Point(329, 29);
-            txtCohortYear.Name = "txtCohortYear";
-            txtCohortYear.Size = new Size(125, 27);
-            txtCohortYear.TabIndex = 4;
-            // 
             // FrmApllication
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -118,5 +142,7 @@
         private Button btnAddSave;
         private Label label2;
         private TextBox txtCohortYear;
+        private ComboBox cmbDuration;
+        private Label label3;
     }
 }
