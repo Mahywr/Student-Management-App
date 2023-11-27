@@ -19,5 +19,11 @@ namespace practice_1
         {
 
         }
+
+        private void BtnProgram_Click(object sender, EventArgs e)
+        {
+            FrmProgram form = new FrmProgram();
+            form.Show();
+        }
     }
 }

@@ -36,7 +36,12 @@
             btnAddSave = new Button();
             label1 = new Label();
             txtName = new TextBox();
+            gridStd = new DataGridView();
+            groupBox2 = new GroupBox();
+            btnRemoveStudent = new Button();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gridStd).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -52,7 +57,7 @@
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(800, 158);
+            groupBox1.Size = new Size(813, 158);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
@@ -94,7 +99,7 @@
             // 
             // btnAddSave
             // 
-            btnAddSave.Location = new Point(694, 123);
+            btnAddSave.Location = new Point(648, 123);
             btnAddSave.Name = "btnAddSave";
             btnAddSave.Size = new Size(94, 29);
             btnAddSave.TabIndex = 3;
@@ -119,18 +124,56 @@
             txtName.Size = new Size(125, 27);
             txtName.TabIndex = 0;
             // 
+            // gridStd
+            // 
+            gridStd.BackgroundColor = SystemColors.ButtonFace;
+            gridStd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridStd.Location = new Point(0, 158);
+            gridStd.Name = "gridStd";
+            gridStd.RowHeadersWidth = 51;
+            gridStd.RowTemplate.Height = 29;
+            gridStd.Size = new Size(813, 245);
+            gridStd.TabIndex = 1;
+            gridStd.CellContentClick += gridStd_CellContentClick;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(btnRemoveStudent);
+            groupBox2.Dock = DockStyle.Bottom;
+            groupBox2.Location = new Point(0, 401);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(813, 49);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            // 
+            // btnRemoveStudent
+            // 
+            btnRemoveStudent.Location = new Point(648, 8);
+            btnRemoveStudent.Name = "btnRemoveStudent";
+            btnRemoveStudent.Size = new Size(94, 29);
+            btnRemoveStudent.TabIndex = 0;
+            btnRemoveStudent.Text = "Remove";
+            btnRemoveStudent.UseVisualStyleBackColor = true;
+            btnRemoveStudent.Click += btnRemoveStudent_Click;
+            // 
             // FrmApllication
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(169, 0, 105);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(813, 450);
+            Controls.Add(groupBox2);
+            Controls.Add(gridStd);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "FrmApllication";
             Text = "application Form";
             Load += FrmApllication_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)gridStd).EndInit();
+            groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -144,5 +187,8 @@
         private TextBox txtCohortYear;
         private ComboBox cmbDuration;
         private Label label3;
+        private DataGridView gridStd;
+        private GroupBox groupBox2;
+        private Button btnRemoveStudent;
     }
 }
