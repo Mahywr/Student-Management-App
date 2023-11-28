@@ -57,7 +57,7 @@
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(813, 158);
+            groupBox1.Size = new Size(752, 158);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
@@ -142,13 +142,13 @@
             groupBox2.Dock = DockStyle.Bottom;
             groupBox2.Location = new Point(0, 401);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(813, 49);
+            groupBox2.Size = new Size(752, 49);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             // 
             // btnRemoveStudent
             // 
-            btnRemoveStudent.Location = new Point(648, 8);
+            btnRemoveStudent.Location = new Point(648, 14);
             btnRemoveStudent.Name = "btnRemoveStudent";
             btnRemoveStudent.Size = new Size(94, 29);
             btnRemoveStudent.TabIndex = 0;
@@ -161,7 +161,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(169, 0, 105);
-            ClientSize = new Size(813, 450);
+            ClientSize = new Size(752, 450);
             Controls.Add(groupBox2);
             Controls.Add(gridStd);
             Controls.Add(groupBox1);
