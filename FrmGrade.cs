@@ -35,7 +35,7 @@ namespace practice_1
         private void SearchStudent(string searchText)
         {
             DataTable dt = new DataTable();
-            string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3";
+            string connectionString = "Data Source=practice1DB.db;Version=3";
             string query = "SELECT id, Name FROM registration WHERE Name LIKE @SearchText OR id = @SearchId";
 
             using (var conn = new SQLiteConnection(connectionString))
@@ -83,12 +83,13 @@ namespace practice_1
             string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3";
 
             string query = @"
-        SELECT a.AssessmentId, a.AssessmentName
-        FROM Assessment a
-        JOIN ModuleTable m ON a.ModuleId = m.ModuleId
-        JOIN DegreeProgram d ON m.DegreeProgramId = d.id
-        JOIN registration r ON d.id = r.ProgramDegreeId
-        WHERE r.id = @StudentId";
+         SELECT a.AssessmentId, a.AssessmentName, g.Grade
+    FROM Assessment a
+    LEFT JOIN ModuleTable m ON a.ModuleId = m.ModuleId
+    LEFT JOIN DegreeProgram d ON m.DegreeProgramId = d.id
+    LEFT JOIN registration r ON d.id = r.ProgramDegreeId
+    LEFT JOIN Grades g ON a.AssessmentId = g.AssessmentId AND r.id = g.StudentId
+    WHERE r.id = @StudentId";
 
             using (var conn = new SQLiteConnection(connectionString))
             {
@@ -130,6 +131,70 @@ namespace practice_1
             {
                 MessageBox.Show("Please select a student.");
             }
+        }
+
+        private void btnSaveGrade_Click(object sender, EventArgs e)
+        {
+            if (gridStudents.CurrentRow != null)
+            {
+                int studentId = Convert.ToInt32(gridStudents.CurrentRow.Cells["id"].Value);
+                bool gradesSaved = false;
+
+                foreach (DataGridViewRow row in gridAddGrade.Rows)
+                {
+                    if (row.Cells["Grade"].Value != null && row.Cells["AssessmentId"].Value != null)
+                    {
+                        string gradeStr = row.Cells["Grade"].Value.ToString();
+                        int assessmentId = Convert.ToInt32(row.Cells["AssessmentId"].Value);
+
+                        if (int.TryParse(gradeStr, out int grade) && grade >= 0 && grade <= 100)
+                        {
+                            SaveGrade(studentId, assessmentId, grade);
+                            gradesSaved = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid grade for Assessment ID " + assessmentId + ". Please enter a valid grade (0-100).");
+                            gradesSaved = false;
+                            break; // Stop saving further grades as an invalid entry was found
+                        }
+                    }
+                }
+
+                if (gradesSaved)
+                {
+                    MessageBox.Show("Grades saved successfully.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a student.");
+            }
+        }
+
+        private void SaveGrade(int studentId, int assessmentId, int grade)
+        {
+            string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3";
+            string query = "INSERT INTO Grades (studentId, AssessmentId, Grade) VALUES (@StudentId, @AssessmentId, @Grade)"; // Adjust the query as needed
+
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@StudentId", studentId);
+                    cmd.Parameters.AddWithValue("@AssessmentId", assessmentId);
+
+                    cmd.Parameters.AddWithValue("@Grade", grade);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void FrmGrade_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

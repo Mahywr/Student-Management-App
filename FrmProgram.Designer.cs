@@ -34,11 +34,9 @@
             label2 = new Label();
             txtProgramTitle = new TextBox();
             label1 = new Label();
-            label3 = new Label();
-            cmbDuration = new ComboBox();
             groupBox2 = new GroupBox();
-            GridProgram = new DataGridView();
             btnRemoveProgram = new Button();
+            GridProgram = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridProgram).BeginInit();
@@ -52,8 +50,6 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtProgramTitle);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(cmbDuration);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
@@ -103,25 +99,6 @@
             label1.TabIndex = 10;
             label1.Text = "Degree Title :";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(521, 19);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 18);
-            label3.TabIndex = 9;
-            label3.Text = "Course duration :";
-            // 
-            // cmbDuration
-            // 
-            cmbDuration.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbDuration.FormattingEnabled = true;
-            cmbDuration.Items.AddRange(new object[] { "One year ", "Two years", "Three years" });
-            cmbDuration.Location = new Point(647, 16);
-            cmbDuration.Name = "cmbDuration";
-            cmbDuration.Size = new Size(151, 26);
-            cmbDuration.TabIndex = 8;
-            // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.FromArgb(169, 0, 105);
@@ -132,6 +109,16 @@
             groupBox2.Size = new Size(820, 51);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
+            // 
+            // btnRemoveProgram
+            // 
+            btnRemoveProgram.Location = new Point(704, 16);
+            btnRemoveProgram.Name = "btnRemoveProgram";
+            btnRemoveProgram.Size = new Size(94, 29);
+            btnRemoveProgram.TabIndex = 3;
+            btnRemoveProgram.Text = "Remove";
+            btnRemoveProgram.UseVisualStyleBackColor = true;
+            btnRemoveProgram.Click += btnRemoveProgram_Click;
             // 
             // GridProgram
             // 
@@ -144,16 +131,6 @@
             GridProgram.Size = new Size(820, 273);
             GridProgram.TabIndex = 2;
             // 
-            // btnRemoveProgram
-            // 
-            btnRemoveProgram.Location = new Point(704, 16);
-            btnRemoveProgram.Name = "btnRemoveProgram";
-            btnRemoveProgram.Size = new Size(94, 29);
-            btnRemoveProgram.TabIndex = 3;
-            btnRemoveProgram.Text = "Remove";
-            btnRemoveProgram.UseVisualStyleBackColor = true;
-            btnRemoveProgram.Click += btnRemoveProgram_Click;
-            // 
             // FrmProgram
             // 
             AutoScaleDimensions = new SizeF(8F, 18F);
@@ -165,6 +142,7 @@
             Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "FrmProgram";
             Text = "Program Degree";
+            Load += FrmProgram_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -176,8 +154,6 @@
 
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Label label3;
-        private ComboBox cmbDuration;
         private Label label1;
         private TextBox txtProgramTitle;
         private TextBox txtCohortYear;

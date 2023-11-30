@@ -43,5 +43,11 @@ namespace practice_1
             FrmGrade form = new FrmGrade();
             form.Show();
         }
+
+        private void BtnResults_Click(object sender, EventArgs e)
+        {
+            frmResult form = new frmResult();
+            form.Show();
+        }
     }
 }

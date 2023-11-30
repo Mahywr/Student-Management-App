@@ -80,6 +80,7 @@
             BtnResults.TabIndex = 8;
             BtnResults.Text = "Results";
             BtnResults.UseVisualStyleBackColor = true;
+            BtnResults.Click += BtnResults_Click;
             // 
             // BtnAddGrades
             // 

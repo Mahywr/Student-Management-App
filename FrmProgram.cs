@@ -136,6 +136,11 @@ namespace practice_1
             MessageBox.Show("Program removed successfully.");
             LoadProgramData(); // Refresh the grid after removing the program
         }
+
+        private void FrmProgram_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

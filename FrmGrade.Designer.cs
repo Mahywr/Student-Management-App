@@ -33,10 +33,10 @@
             BtnSearch = new Button();
             txtSearch = new TextBox();
             groupBox2 = new GroupBox();
+            btnSaveGrade = new Button();
             gridStudents = new DataGridView();
             gridAddGrade = new DataGridView();
             BtnAddGrade = new Button();
-            btnSaveGrade = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridStudents).BeginInit();
@@ -95,6 +95,16 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             // 
+            // btnSaveGrade
+            // 
+            btnSaveGrade.Location = new Point(694, 0);
+            btnSaveGrade.Name = "btnSaveGrade";
+            btnSaveGrade.Size = new Size(94, 29);
+            btnSaveGrade.TabIndex = 5;
+            btnSaveGrade.Text = "Save";
+            btnSaveGrade.UseVisualStyleBackColor = true;
+            btnSaveGrade.Click += btnSaveGrade_Click;
+            // 
             // gridStudents
             // 
             gridStudents.BackgroundColor = SystemColors.ButtonFace;
@@ -127,15 +137,6 @@
             BtnAddGrade.UseVisualStyleBackColor = true;
             BtnAddGrade.Click += BtnAddGrade_Click;
             // 
-            // btnSaveGrade
-            // 
-            btnSaveGrade.Location = new Point(694, 0);
-            btnSaveGrade.Name = "btnSaveGrade";
-            btnSaveGrade.Size = new Size(94, 29);
-            btnSaveGrade.TabIndex = 5;
-            btnSaveGrade.Text = "Save";
-            btnSaveGrade.UseVisualStyleBackColor = true;
-            // 
             // FrmGrade
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -148,6 +149,7 @@
             Controls.Add(groupBox1);
             Name = "FrmGrade";
             Text = "Grades";
+            Load += FrmGrade_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
