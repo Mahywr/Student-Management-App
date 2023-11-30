@@ -25,5 +25,23 @@ namespace practice_1
             FrmProgram form = new FrmProgram();
             form.Show();
         }
+
+        private void BtnModules_Click(object sender, EventArgs e)
+        {
+            FrmModule frmModules = new FrmModule();
+            frmModules.Show();
+        }
+
+        private void BtnAssessment_Click(object sender, EventArgs e)
+        {
+            FrmAssessment form = new FrmAssessment();
+            form.Show();
+        }
+
+        private void BtnAddGrades_Click(object sender, EventArgs e)
+        {
+            FrmGrade form = new FrmGrade();
+            form.Show();
+        }
     }
 }

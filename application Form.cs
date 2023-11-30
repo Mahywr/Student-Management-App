@@ -34,10 +34,11 @@ namespace practice_1
 
                 string selectedDuration = cmbDuration.SelectedItem.ToString();
                 string uniqueId = GenerateUniqueId(cohortYear);
+                int programDegreeId = Convert.ToInt32(cmbDegreePrograms.SelectedValue);
 
 
 
-                InsertNameIntoDatabas(uniqueId, userName, cohortYear, selectedDuration);
+                InsertNameIntoDatabas(uniqueId, userName, cohortYear, selectedDuration , programDegreeId);
 
 
 
@@ -53,11 +54,11 @@ namespace practice_1
 
         }
         private void
-            InsertNameIntoDatabas(string uniqueId, string userName, int cohortYear, string selectedDuration)
+            InsertNameIntoDatabas(string uniqueId, string userName, int cohortYear, string selectedDuration, int programDegreeId)
         {
             string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3;";
 
-            string commandText = "INSERT INTO registration (Name , cohortYear, Duration , id) VALUES (@Name , @cohortYear, @Duration , @UniqueId);";
+            string commandText = "INSERT INTO registration (Name , cohortYear, Duration , id, ProgramDegreeId) VALUES (@Name , @cohortYear, @Duration , @UniqueId ,@ProgramDegreeId );";
 
             using (var connection = new SQLiteConnection(connectionString))
             {
@@ -68,6 +69,7 @@ namespace practice_1
                     command.Parameters.AddWithValue("@cohortYear", cohortYear);
                     command.Parameters.AddWithValue("@Duration", selectedDuration);
                     command.Parameters.AddWithValue("@UniqueId", uniqueId);
+                    command.Parameters.AddWithValue("@ProgramDegreeId", programDegreeId);
 
                     command.ExecuteNonQuery();
 
@@ -94,6 +96,7 @@ namespace practice_1
         {
 
             LoadStudentData();
+            PopulateDegreeProgramsComboBox();
         }
 
         private void LoadStudentData()
@@ -107,7 +110,10 @@ namespace practice_1
             DataTable dt = new DataTable();
 
             string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3;";
-            string query = "SELECT * FROM registration";
+            string query = @"
+        SELECT r.id, r.Name, r.CohortYear, r.duration, dp.Title AS ProgramName
+        FROM registration r
+        LEFT JOIN DegreeProgram dp ON r.ProgramDegreeId = dp.id";
 
             using (var conn = new SQLiteConnection(connectionString))
             {
@@ -175,6 +181,38 @@ namespace practice_1
 
 
         }
+        private void PopulateDegreeProgramsComboBox()
+        {
+            DataTable degreePrograms = GetDegreePrograms();
+            cmbDegreePrograms.DataSource = degreePrograms;
+            cmbDegreePrograms.DisplayMember = "Title"; // Replace with your column name for the program title
+            cmbDegreePrograms.ValueMember = "id"; // Replace with your column name for the program ID
+        }
+
+        private DataTable GetDegreePrograms()
+        {
+            DataTable dt = new DataTable();
+            string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3;";
+            string query = "SELECT id, Title FROM DegreeProgram"; // Adjust the query as per your table
+
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                using (var cmd = new SQLiteCommand(query, conn))
+                {
+                    conn.Open();
+                    using (var adapter = new SQLiteDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+
+
+
     }
 
 

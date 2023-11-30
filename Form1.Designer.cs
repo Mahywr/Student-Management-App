@@ -30,14 +30,14 @@
         {
             maingpBox = new GroupBox();
             groupBox1 = new GroupBox();
+            BtnResults = new Button();
+            BtnAddGrades = new Button();
             label2 = new Label();
             label1 = new Label();
             BtnAssessment = new Button();
             BtnModules = new Button();
             BtnProgram = new Button();
             btnAdduser = new Button();
-            BtnAddGrades = new Button();
-            BtnResults = new Button();
             maingpBox.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -70,6 +70,27 @@
             groupBox1.Size = new Size(118, 380);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
+            // 
+            // BtnResults
+            // 
+            BtnResults.Font = new Font("Tahoma", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnResults.Location = new Point(9, 253);
+            BtnResults.Name = "BtnResults";
+            BtnResults.Size = new Size(98, 29);
+            BtnResults.TabIndex = 8;
+            BtnResults.Text = "Results";
+            BtnResults.UseVisualStyleBackColor = true;
+            // 
+            // BtnAddGrades
+            // 
+            BtnAddGrades.Font = new Font("Tahoma", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            BtnAddGrades.Location = new Point(9, 218);
+            BtnAddGrades.Name = "BtnAddGrades";
+            BtnAddGrades.Size = new Size(98, 29);
+            BtnAddGrades.TabIndex = 7;
+            BtnAddGrades.Text = "Add grades";
+            BtnAddGrades.UseVisualStyleBackColor = true;
+            BtnAddGrades.Click += BtnAddGrades_Click;
             // 
             // label2
             // 
@@ -104,6 +125,7 @@
             BtnAssessment.TabIndex = 4;
             BtnAssessment.Text = "Assesment";
             BtnAssessment.UseVisualStyleBackColor = true;
+            BtnAssessment.Click += BtnAssessment_Click;
             // 
             // BtnModules
             // 
@@ -114,6 +136,7 @@
             BtnModules.TabIndex = 3;
             BtnModules.Text = "Module";
             BtnModules.UseVisualStyleBackColor = true;
+            BtnModules.Click += BtnModules_Click;
             // 
             // BtnProgram
             // 
@@ -136,26 +159,6 @@
             btnAdduser.Text = "Student";
             btnAdduser.UseVisualStyleBackColor = true;
             btnAdduser.Click += btnAdduser_Click;
-            // 
-            // BtnAddGrades
-            // 
-            BtnAddGrades.Font = new Font("Tahoma", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnAddGrades.Location = new Point(9, 218);
-            BtnAddGrades.Name = "BtnAddGrades";
-            BtnAddGrades.Size = new Size(98, 29);
-            BtnAddGrades.TabIndex = 7;
-            BtnAddGrades.Text = "Add grades";
-            BtnAddGrades.UseVisualStyleBackColor = true;
-            // 
-            // BtnResults
-            // 
-            BtnResults.Font = new Font("Tahoma", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            BtnResults.Location = new Point(9, 253);
-            BtnResults.Name = "BtnResults";
-            BtnResults.Size = new Size(98, 29);
-            BtnResults.TabIndex = 8;
-            BtnResults.Text = "Results";
-            BtnResults.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 

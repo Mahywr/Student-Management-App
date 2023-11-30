@@ -118,7 +118,7 @@ namespace practice_1
                 return;
             }
 
-            int programId = Convert.ToInt32(GridProgram.CurrentRow.Cells[0].Value); // Replace "id" with the actual name of the ID column
+            int programId = Convert.ToInt32(GridProgram.CurrentRow.Cells[1].Value); // Replace "id" with the actual name of the ID column
 
             string connectionString = "Data Source=C:\\Users\\Asus\\Desktop\\New folder (2)\\practice 1\\practice1DB.db;Version=3;";
             string query = "DELETE FROM DegreeProgram WHERE id = @id";

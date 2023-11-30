@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            ProgramLabel = new Label();
+            cmbDegreePrograms = new ComboBox();
             label3 = new Label();
             cmbDuration = new ComboBox();
             label2 = new Label();
@@ -47,6 +49,8 @@
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.ScrollBar;
+            groupBox1.Controls.Add(ProgramLabel);
+            groupBox1.Controls.Add(cmbDegreePrograms);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(cmbDuration);
             groupBox1.Controls.Add(label2);
@@ -60,6 +64,23 @@
             groupBox1.Size = new Size(752, 158);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
+            // 
+            // ProgramLabel
+            // 
+            ProgramLabel.AutoSize = true;
+            ProgramLabel.Location = new Point(8, 83);
+            ProgramLabel.Name = "ProgramLabel";
+            ProgramLabel.Size = new Size(69, 20);
+            ProgramLabel.TabIndex = 9;
+            ProgramLabel.Text = "Program:";
+            // 
+            // cmbDegreePrograms
+            // 
+            cmbDegreePrograms.FormattingEnabled = true;
+            cmbDegreePrograms.Location = new Point(83, 80);
+            cmbDegreePrograms.Name = "cmbDegreePrograms";
+            cmbDegreePrograms.Size = new Size(125, 28);
+            cmbDegreePrograms.TabIndex = 8;
             // 
             // label3
             // 
@@ -190,5 +211,7 @@
         private DataGridView gridStd;
         private GroupBox groupBox2;
         private Button btnRemoveStudent;
+        private Label ProgramLabel;
+        private ComboBox cmbDegreePrograms;
     }
 }
