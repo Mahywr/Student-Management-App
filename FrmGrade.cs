@@ -51,7 +51,7 @@ namespace practice_1
                     }
                     else
                     {
-                        // searchText is not a valid integer, use a dummy value for ID search !
+                        // searchText is not a valid integer, use a dummy value for ID search ! 
                         cmd.Parameters.AddWithValue("@SearchId", -1);
                     }
 
